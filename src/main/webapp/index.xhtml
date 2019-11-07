@@ -6,6 +6,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:m="http://java.sun.com/jsf/composite/uiblocks"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
 
 
@@ -28,51 +29,112 @@
 <h:body id="page-top" data-spy="scroll" data-target=".navbar-custom">
     <div id="wrapper">
         <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-            <div class="top-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-6">
-                            <p class="bold text-left">Деньги на любые цели</p>
-                        </div>
-                        <div class="col-sm-6 col-md-6">
-                            <p class="bold text-right">info@creditspace.ru</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <m:toppanel left="Деньги на любые цели" right="info@creditspace.ru"/>
             <div class="container navigation">
 
                 <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-main-collapse">
                         <i class="fa fa-bars"></i>
                     </button>
-                   <m:logo />
+                    <m:logo/>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#intro">Home</a></li>
-                        <li><a href="#service">Service</a></li>
+                        <li class="active"><a href="#intro">Главная</a></li>
+                        <!--li><a href="#service">Service</a></li>
                         <li><a href="#doctor">Doctors</a></li>
                         <li><a href="#facilities">Facilities</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>More <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="index.html">Home form</a></li>
-                                <li><a href="index-video.html">Home video</a></li>
-                                <li><a href="index-cta.html">Home CTA</a></li>
-                                <li><a href="https://bootstrapmade.com">Download</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="#pricing">Pricing</a></li-->
+
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
             <!-- /.container -->
         </nav>
+        <section id="intro" class="intro">
+            <div class="intro-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+                                <h2 class="h-ultra">Ваш личный помощник</h2>
+                            </div>
+                            <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.1s">
+                                <h4 class="h-light">в управлении кредитами</h4>
+                            </div>
+                            <div class="well well-trans">
+                                <div class="wow fadeInRight" data-wow-delay="0.1s">
 
+                                    <ul class="lead-list">
+                                        <li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Отправляйте заявки</strong><br />Множество видов кредитования, включая микрофинансы</span></li>
+                                        <li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Следите за банками</strong><br />Актуальная информация от Центробанка</span></li>
+                                        <li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Делитесь мнением</strong><br />Заводите друзей среди заемщиков!</span></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-wrapper">
+                                <div class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
+
+                                    <div class="panel panel-skin">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title"><span class="fa fa-pencil-square-o"></span> Регистрация нового участника</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:form role="form" class="lead">
+                                                <div class="row">
+                                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Ваше имя</label>
+                                                            <p:inputText name="first_name" id="first_name" class="form-control input-md" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Email</label>
+                                                            <p:inputText name="last_name" id="last_name" class="form-control input-md" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Пароль</label>
+                                                            <p:password name="password" id="email" class="form-control input-md" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Повторите пароль</label>
+                                                            <p:password name="passwordAgain" id="phone" class="form-control input-md" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <p:commandButton value="Регистрация" class="btn btn-skin btn-block btn-lg" />
+
+                                                <p class="lead-footer"><p:commandButton value="Вход в систему" class="btn btn-skin btn-block btn-lg" /></p>
+
+                                            </h:form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- wrapper -->
     </div>
 </h:body>
