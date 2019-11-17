@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html
+        xml:lang="en"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:cc="http://java.sun.com/jsf/composite">
+
+<cc:interface>
+</cc:interface>
+<cc:implementation>
+    <form action="/login" method="post" role="form" class="lead">
+        <div class="row">
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email"
+                            name="login" id="username"
+                            class="form-control input-md"/>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <label>Пароль</label>
+                    <input type="password"
+                            name="pass" id="password"
+                            class="form-control input-md"/>
+                </div>
+            </div>
+        </div>
+        <h:commandButton ajax="false" type="submit" value="Регистрация"
+                         class="btn btn-skin btn-block btn-lg"/>
+    </form>
+
+
+</cc:implementation>
+</html>

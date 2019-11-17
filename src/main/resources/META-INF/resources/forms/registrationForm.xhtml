@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html
+        xml:lang="en"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:cc="http://java.sun.com/jsf/composite">
+
+<cc:interface>
+</cc:interface>
+<cc:implementation>
+    <h:form role="form" class="lead">
+        <div class="row">
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <label>Ваше имя</label>
+                    <p:inputText
+                            value="#{registrationController.firstName}" name="first_name" id="first_name"
+                            class="form-control input-md"/>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <label>Email</label>
+                    <p:inputText
+                            value="#{registrationController.email}" name="last_name" id="last_name"
+                            class="form-control input-md"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <label>Пароль</label>
+                    <p:password
+                            value="#{registrationController.password}" name="password" id="email"
+                            class="form-control input-md"/>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <label>Повторите пароль</label>
+                    <p:password
+                            value="#{registrationController.passwordAgain}" name="passwordAgain" id="phone"
+                            class="form-control input-md"/>
+                </div>
+            </div>
+        </div>
+
+
+        <p:commandButton action="#{registrationController.registerNewUser}" value="Регистрация"
+                         class="btn btn-skin btn-block btn-lg"/>
+    </h:form>
+    <h:form>
+        <p class="lead-footer">
+            <p:commandButton type="button" onclick="PF('loginDialog').show()" value="Вход в систему"
+                             class="btn btn-skin btn-block btn-lg"/>
+        </p>
+    </h:form>
+
+</cc:implementation>
+</html>

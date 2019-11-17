@@ -46,6 +46,16 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
+            <groupId>us.cnlist</groupId>
+            <artifactId>common-objects</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>2.1.8.RELEASE</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-activemq</artifactId>
         </dependency>
