@@ -13,6 +13,21 @@
 
 </h:head>
 <h:body>
-#{userController.loggedUser}
+<p:toolbar>
+    <p:toolbarGroup align="left">
+        <m:logo />
+    </p:toolbarGroup>
+    <p:toolbarGroup align="right">
+        <h:form>
+            <p:button value="Выход" href="/logout" />
+        </h:form>
+    </p:toolbarGroup>
+
+</p:toolbar>
+    <p:tabView style="width:100%; height: 100%">
+        <p:tab title="Главное" closable="false">
+            dd
+        </p:tab>
+    </p:tabView>
 </h:body>
 </html>
