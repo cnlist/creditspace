@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html
+        xml:lang="en"
+        xmlns:m="http://java.sun.com/jsf/composite/uiblocks"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:fx="http://java.sun.com/jsf/composite/forms"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:cc="http://java.sun.com/jsf/composite">
+
+<cc:interface>
+    <cc:attribute name="labelText" required="true" />
+</cc:interface>
+<cc:implementation>
+ <h:panelGrid columns="1">
+     <h:column>
+         <h:outputText value="#{cc.attrs.labelText}" />
+     </h:column>
+     <h:column>
+         <cc:insertChildren />
+     </h:column>
+ </h:panelGrid>
+</cc:implementation>
+</html>
