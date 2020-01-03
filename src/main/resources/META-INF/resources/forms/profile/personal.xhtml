@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html
+        xml:lang="en"
+        xmlns:m="http://java.sun.com/jsf/composite/uiblocks"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:o="http://primefaces.org/ui/extensions"
+        xmlns:cc="http://java.sun.com/jsf/composite" xmlns:f="http://java.sun.com/jsf/core">
+
+<cc:interface>
+</cc:interface>
+<cc:implementation>
+<h:panelGrid columns="2">
+    <h:column>Фамилия:</h:column>
+    <h:column><p:inputText value="#{profileFormController.currentProfile.citizenData.secondName}" /></h:column>
+
+    <h:column>Имя:</h:column>
+    <h:column><p:inputText value="#{profileFormController.currentProfile.citizenData.firstName}" /></h:column>
+
+    <h:column>Отчество:</h:column>
+    <h:column><p:inputText value="#{profileFormController.currentProfile.citizenData.middleName}" /></h:column>
+
+    <h:column>Пол</h:column>
+    <h:column>
+        <p:selectOneRadio value="#{profileFormController.currentProfile.citizenData.male}">
+            <f:selectItem itemLabel="Мужской" itemValue="true" />
+            <f:selectItem itemLabel="Женский" itemValue="false" />
+        </p:selectOneRadio>
+    </h:column>
+
+</h:panelGrid>
+
+</cc:implementation>
+</html>

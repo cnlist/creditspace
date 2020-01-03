@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html
         xml:lang="en"
-        xmlns:m="http://java.sun.com/jsf/composite/uiblocks"
+        xmlns="http://www.w3.org/1999/xhtml"
         xmlns:p="http://primefaces.org/ui"
         xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:o="http://primefaces.org/ui/extensions"
-        xmlns:cc="http://java.sun.com/jsf/composite">
+        xmlns:profile="http://java.sun.com/jsf/composite/forms/profile"
+        xmlns:cc="http://java.sun.com/jsf/composite" >
 
 <cc:interface>
 </cc:interface>
 <cc:implementation>
-    <p:socket  channel="/gs-guide-websocket" autoConnect="true" onMessage="alert('aa');" />
-    <h:form id="tsf">
 
-        <p:autoUpdate/>
-        <h:panelGrid columns="3">
-            <m:labeledBlock labelText="Имя">
-                <p:inputText value="#{profileFormController.currentProfile.citizenData.firstName}"/>
-            </m:labeledBlock>
-            <m:labeledBlock labelText="Фамилия">
-                <p:inputText value="#{profileFormController.currentProfile.citizenData.secondName}"/>
-            </m:labeledBlock>
-            <m:labeledBlock labelText="Отчество">
-                <p:inputText value="#{profileFormController.currentProfile.citizenData.middleName}"/>
-            </m:labeledBlock>
-        </h:panelGrid>
-        <p:commandButton value="Сохранить" action="#{profileFormController.saveProfile}"/>
+    <h:form id="tsf">
+        <p:tabView>
+            <p:tab title="Имя">
+                <profile:personal/>
+            </p:tab>
+            <p:tab title="Контакты">
+                <profile:contacts />
+            </p:tab>
+        </p:tabView>
+        <br/><p:commandButton value="Сохранить" action="#{profileFormController.saveProfile}"/>
     </h:form>
 </cc:implementation>
 </html>
