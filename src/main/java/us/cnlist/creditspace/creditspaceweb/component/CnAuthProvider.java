@@ -1,6 +1,7 @@
 package us.cnlist.creditspace.creditspaceweb.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,7 +14,8 @@ import java.util.ArrayList;
 
 @Component
 public class CnAuthProvider implements AuthenticationProvider {
-
+    @Autowired
+    private ApplicationEventPublisher publisher;
     @Autowired
     private CustomServClient customerClient;
 
@@ -32,7 +34,6 @@ public class CnAuthProvider implements AuthenticationProvider {
 
                 UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(authentication.getName(),
                         authentication.getCredentials().toString(), new ArrayList<>());
-
                 return token;
             }
 
@@ -44,4 +45,6 @@ public class CnAuthProvider implements AuthenticationProvider {
     public boolean supports(Class<?> auth) {
         return true;
     }
+
+
 }

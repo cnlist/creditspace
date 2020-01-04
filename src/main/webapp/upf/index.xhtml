@@ -9,24 +9,29 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:fx="http://java.sun.com/jsf/composite/forms"
       xmlns:h="http://java.sun.com/jsf/html">
-<h:head>
 
+<h:head>
+    <style>
+        * {
+     font-size: 12px;
+        }
+    </style>
 </h:head>
 <h:body>
-<p:toolbar>
-    <p:toolbarGroup align="left">
-        <m:logo />
-    </p:toolbarGroup>
-    <p:toolbarGroup align="right">
-        <h:form>
-            <p:button value="Выход" href="/logout" />
-        </h:form>
-    </p:toolbarGroup>
+    <p:toolbar>
+        <p:toolbarGroup align="left">
+            <m:logo/>
+        </p:toolbarGroup>
+        <p:toolbarGroup align="right">
+            <h:form>
+                <p:button value="Выход" href="/logout"/>
+            </h:form>
+        </p:toolbarGroup>
 
-</p:toolbar>
+    </p:toolbar>
     <p:tabView style="width:100%; height: 100%">
         <p:tab title="Главное" closable="false">
-            dd
+            <fx:profileForm/>
         </p:tab>
     </p:tabView>
 </h:body>
