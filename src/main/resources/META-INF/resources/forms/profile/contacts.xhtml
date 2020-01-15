@@ -3,13 +3,66 @@
         xml:lang="en"
         xmlns:m="http://java.sun.com/jsf/composite/uiblocks"
         xmlns:p="http://primefaces.org/ui"
-        xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:o="http://primefaces.org/ui/extensions"
         xmlns:cc="http://java.sun.com/jsf/composite">
 
 <cc:interface>
 </cc:interface>
 <cc:implementation>
-<p:commandButton type="button" value="Добавить контакт" />
+    <p:commandButton type="button" value="Добавить контакт" onclick="PF('contactDialog').show()"/>
+
+    <p:dataTable widgetVar="contacts.mainContactTable"
+                 var="contact"
+                 selectionMode="single"
+                 rowKey="#{contact.id}"
+                 selection="#{contactController.tableSelectedContact}"
+                 value="#{contactController.profileContacts}">
+        <p:ajax event="rowSelect" update="@widgetVar(contacts.contactDetails)"/>
+        <p:column width="24">
+
+
+            <m:condImage rendered="#{contact.contactType.name() eq 'VK_PROFILE'}"
+                         url="images/social/vk.png"/>
+            <m:condImage rendered="#{contact.contactType.name() eq 'FACEBOOK_PROFILE'}"
+                         url="images/social/fb.png"/>
+            <m:condImage rendered="#{contact.contactType.name() eq 'TELEGRAM'}"
+                         url="images/social/telegram.png"/>
+            <m:condImage rendered="#{contact.contactType.name() eq 'VIBER'}"
+                         url="images/social/viber.png"/>
+            <m:condImage rendered="#{contact.contactType.name() eq 'EMAIL'}"
+                         url="images/social/outlook.png"/>
+            <m:condImage rendered="#{contact.contactType.name() eq 'CELLPHONE'}"
+                         url="images/social/phone.png"/>
+            <m:condImage rendered="#{contact.contactType.name() eq 'WHATSAPP'}"
+                         url="images/social/whatsapp.png"/>
+
+        </p:column>
+        <p:column headerText="Тип контакта">
+            #{contactController.desc(contact.contactType)}
+        </p:column>
+        <p:column headerText="Значение">
+
+            #{contact.value}
+        </p:column>
+        <p:column width="20" style="text-align: center">
+
+            <p:commandLink style="text-align: left; width:10px"
+                           update="@widgetVar(contacts.mainContactTable)"
+                           action="#{contactController.deleteContact(contact.id)}">
+                <img src="images/delete.png" style="margin: 0 auto"/>
+                <p:confirm header="Подтверждение" message="Удалить этот контакт?"/>
+            </p:commandLink>
+
+        </p:column>
+    </p:dataTable>
+    <p:panel
+            widgetVar="contacts.contactDetails"
+            header="Детали"
+    >
+        <m:labeledBlock labelText="Значение контакта">
+            <p:inputText value="#{contactController.tableSelectedContact.value}"/>
+        </m:labeledBlock> <p:commandButton value="Изменить контакт"
+                                           update="@widgetVar(contacts.mainContactTable)"
+                                           action="#{contactController.editContact}"/>
+    </p:panel>
 </cc:implementation>
 </html>

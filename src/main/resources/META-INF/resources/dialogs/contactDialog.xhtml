@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html
+        xml:lang="en"
+        xmlns:m="http://java.sun.com/jsf/composite/uiblocks"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:cc="http://java.sun.com/jsf/composite" xmlns:f="http://java.sun.com/jsf/core">
+
+<cc:interface>
+</cc:interface>
+<cc:implementation>
+    <p:dialog
+            closable="true"
+            closeOnEscape="true"
+            widgetVar="contactDialog"
+            width="437"
+            height="115"
+            modal="true"
+            maximizable="false"
+            resizable="false"
+            minimizable="false"
+            header="Добавить контакт">
+        <h:form>
+            <h:panelGrid columns="2" width="100%" style="background-color: #b6d9bf">
+
+                <m:labeledBlock labelText="Тип контакта">
+                    <p:selectOneMenu  value="#{contactController.selectedContactType}" var="contact">
+                        <f:selectItems value="#{contactController.contactTypes}" var="ctype"
+                                       itemLabel="#{ctype.description}" itemValue="#{ctype.contactType}"/>
+                        <p:column style="border: none !important;">
+                            <m:condImage rendered="#{contact.name() eq 'VK_PROFILE'}"
+                                         url="images/social/vk.png"/>
+                            <m:condImage rendered="#{contact.name() eq 'FACEBOOK_PROFILE'}"
+                                         url="images/social/fb.png"/>
+                            <m:condImage rendered="#{contact.name() eq 'TELEGRAM'}"
+                                         url="images/social/telegram.png"/>
+                            <m:condImage rendered="#{contact.name() eq 'VIBER'}"
+                                         url="images/social/viber.png"/>
+                            <m:condImage rendered="#{contact.name() eq 'EMAIL'}"
+                                         url="images/social/outlook.png"/>
+                            <m:condImage rendered="#{contact.name() eq 'CELLPHONE'}"
+                                         url="images/social/phone.png"/>
+                            <m:condImage rendered="#{contact.name() eq 'WHATSAPP'}"
+                                         url="images/social/whatsapp.png"/>
+                        </p:column>
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Вид контакта"/>
+                            </f:facet>
+                            <h:outputText value="#{contactController.desc(contact)}"/>
+                        </p:column>
+                    </p:selectOneMenu>
+                </m:labeledBlock>
+                <m:labeledBlock labelText="Значение">
+                    <p:inputText style="width:200px" value="#{contactController.contactValue}"/>
+                </m:labeledBlock>
+
+
+            </h:panelGrid>
+            <br/>
+            <p:toolbar>
+                <p:toolbarGroup align="right">
+                    <p:commandButton value="Добавить контакт" oncomplete="PF('contactDialog').hide()" update="@widgetVar(contacts.mainContactTable)" action="#{contactController.createContact}"/>
+                </p:toolbarGroup>
+            </p:toolbar>
+        </h:form>
+    </p:dialog>
+</cc:implementation>
+</html>
