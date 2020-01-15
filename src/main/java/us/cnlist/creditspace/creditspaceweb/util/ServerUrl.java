@@ -7,6 +7,7 @@ public class ServerUrl {
         public static final String GET_BY_EMAIL = "/profile/email/";
         public static final String SAVE = "/profile";
         public static final String CONTACTS = "/contact?citizen=";
+        public static final String CONTACT = "/contact";
     }
 
     private ServerUrl(){}

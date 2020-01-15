@@ -7,6 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:m="http://java.sun.com/jsf/composite/uiblocks"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:d="http://java.sun.com/jsf/composite/dialogs"
       xmlns:fx="http://java.sun.com/jsf/composite/forms"
       xmlns:h="http://java.sun.com/jsf/html">
 
@@ -18,6 +19,11 @@
     </style>
 </h:head>
 <h:body>
+    <p:confirmDialog global="true">
+        <p:commandButton value="Да" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+        <p:commandButton value="Нет" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+    </p:confirmDialog>
+    <d:contactDialog />
     <p:toolbar>
         <p:toolbarGroup align="left">
             <m:logo/>
