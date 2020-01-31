@@ -10,5 +10,8 @@ public class ServerUrl {
         public static final String CONTACT = "/contact";
     }
 
+    public static final class GEO {
+        public static final String SEARCH = "/city/search";
+    }
     private ServerUrl(){}
 }
