@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Named
+@SuppressWarnings({"autowired", "SpringJavaAutowiredFieldsWarningInspection"})
 public class ContactController extends ControllerCore {
 
     @Autowired

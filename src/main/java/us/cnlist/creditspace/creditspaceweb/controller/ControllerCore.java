@@ -7,13 +7,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 
+@SuppressWarnings({"autowired"})
 public class ControllerCore {
 
-    public Authentication getAuthentication() {
+    private Authentication getAuthentication() {
         return SecurityContextHolder.getContext().getAuthentication();
     }
 
-    public boolean isUserAuthenticated() {
+    protected boolean isUserAuthenticated() {
 
         return getAuthentication() != null
                 && getAuthentication().isAuthenticated()
@@ -22,19 +23,15 @@ public class ControllerCore {
     }
 
 
-    public String getLoggedUser() {
-        String name = getAuthentication()
-                .getName();
-        System.out.println("name: " + name);
-        return name;
+    protected String getLoggedUser() {
+        return getAuthentication().getName();
     }
 
     public FacesContext context() {
         return FacesContext.getCurrentInstance();
     }
 
-    public void facesRedirect(String where) {
-
+    protected void facesRedirect(String where) {
         UIViewRoot newView =
                 context().getApplication().getViewHandler().createView(
                         context(),

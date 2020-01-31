@@ -1,6 +1,5 @@
 package us.cnlist.creditspace.creditspaceweb.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -16,10 +15,13 @@ import us.cnlist.creditspace.creditspaceweb.component.CnAuthProvider;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    private final CnAuthProvider authProvider;
     @Value("${us.cnlist.auth}")
     private String rootUri;
-    @Autowired
-    private CnAuthProvider authProvider;
+
+    public SecurityConfiguration(CnAuthProvider authProvider) {
+        this.authProvider = authProvider;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -30,10 +32,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .usernameParameter("login")
                 .passwordParameter("pass")
                 .successForwardUrl("/upf/index.xhtml")
-
                 .and()
                 .authorizeRequests()
-                .antMatchers("/upf/**", "/upf", "/upf/*", "/upf/index.xhtml")
+                .antMatchers("/upf/**", "/upf")
                 .authenticated()
                 .anyRequest()
                 .permitAll()
@@ -46,7 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authProvider);
     }
 

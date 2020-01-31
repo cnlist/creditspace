@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CreditspaceWebApplication {
 
     public static void main(String[] args) {
-        
         SpringApplication.run(CreditspaceWebApplication.class, args);
     }
 

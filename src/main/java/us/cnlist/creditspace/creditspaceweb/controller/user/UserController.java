@@ -10,7 +10,9 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
+@SuppressWarnings({"autowired", "SpringJavaAutowiredFieldsWarningInspection"})
 public class UserController extends ControllerCore {
+
 
     @Autowired
     private CustomServClient customerClient;
@@ -22,8 +24,7 @@ public class UserController extends ControllerCore {
     }
 
     public UserProfile getUserProfile() {
-      UserProfile profile = customerClient.getProfileByEmail(getLoggedUser());
-      return profile;
-    }
+      return customerClient.getProfileByEmail(getLoggedUser());
+          }
 
 }

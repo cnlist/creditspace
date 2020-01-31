@@ -1,11 +1,8 @@
 package us.cnlist.creditspace.creditspaceweb.component;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
 import us.cnlist.objects.messages.rq.AuthenticateUserRQ;
 import us.cnlist.objects.messages.rs.AuthenticateUserRs;
@@ -14,13 +11,15 @@ import java.util.ArrayList;
 
 @Component
 public class CnAuthProvider implements AuthenticationProvider {
-    @Autowired
-    private ApplicationEventPublisher publisher;
-    @Autowired
-    private CustomServClient customerClient;
+
+    private final CustomServClient customerClient;
+
+    public CnAuthProvider(CustomServClient customerClient) {
+        this.customerClient = customerClient;
+    }
 
     @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+    public Authentication authenticate(Authentication authentication) {
 
         AuthenticateUserRQ rq = new AuthenticateUserRQ(
                 authentication.getName(),
@@ -28,14 +27,10 @@ public class CnAuthProvider implements AuthenticationProvider {
         );
 
         AuthenticateUserRs rs = customerClient.doAuth(rq);
-        if (rs != null) {
+        if (rs != null && rs.isAuthenticated()) {
 
-            if (rs.isAuthenticated()) {
-
-                UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(authentication.getName(),
-                        authentication.getCredentials().toString(), new ArrayList<>());
-                return token;
-            }
+            return new UsernamePasswordAuthenticationToken(authentication.getName(),
+                    authentication.getCredentials().toString(), new ArrayList<>());
 
         }
         return null;

@@ -1,6 +1,5 @@
 package us.cnlist.creditspace.creditspaceweb.component.contacts;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import us.cnlist.creditspace.creditspaceweb.component.CustomServClient;
@@ -17,10 +16,13 @@ import java.util.Objects;
 @Component
 public class ContactsClient {
 
-    @Autowired
-    private RestTemplate customServRestTemplate;
-    @Autowired
-    private CustomServClient customServClient;
+    private final RestTemplate customServRestTemplate;
+    private final CustomServClient customServClient;
+
+    public ContactsClient(RestTemplate customServRestTemplate, CustomServClient customServClient) {
+        this.customServRestTemplate = customServRestTemplate;
+        this.customServClient = customServClient;
+    }
 
     public List<Contact> getCustomerContacts(String email) {
         UserProfile profile = customServClient.getProfileByEmail(email);
