@@ -25,7 +25,7 @@
         <repository>
             <id>cnlist-data</id>
             <name>cnlist-data</name>
-            <url>http://173.212.234.147:8081/repository/cnlist-data/</url>
+            <url>http://173.212.234.147:8081/repository/cnlist-data-snapshots/</url>
 
         </repository>
         <repository>
