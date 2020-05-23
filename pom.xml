@@ -20,7 +20,17 @@
         <java.version>1.8</java.version>
         <joinfaces.version>3.3.0-rc2</joinfaces.version>
     </properties>
+    <distributionManagement>
+        <repository>
+            <id>cnlist-releases</id>
+            <url>http://194.58.103.128:8081/repository/cnlist-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>cnlist-snapshots</id>
+            <url>http://194.58.103.128:8081/repository/cnlist-snapshots</url>
 
+        </snapshotRepository>
+    </distributionManagement>
     <repositories>
         <repository>
             <id>cnlist-data</id>
@@ -31,6 +41,16 @@
         <repository>
             <id>pf</id>
             <url>http://repository.primefaces.org/</url>
+        </repository>
+        <repository>
+            <id>cnlist-releases</id>
+            <url>http://194.58.103.128:8081/repository/cnlist-releases</url>
+            <releases />
+        </repository>
+        <repository>
+            <id>cnlist-snapshots</id>
+            <url>http://194.58.103.128:8081/repository/cnlist-snapshots</url>
+            <snapshots />
         </repository>
     </repositories>
     <dependencyManagement>
