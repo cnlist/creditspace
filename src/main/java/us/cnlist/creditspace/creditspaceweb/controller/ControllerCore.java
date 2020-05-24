@@ -4,6 +4,7 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 
@@ -41,6 +42,19 @@ public class ControllerCore {
                         where);
         context().setViewRoot(newView);
         context().renderResponse();
+    }
+
+    public void msgError(String title, String text){
+        context().addMessage("",new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                title,text));
+    }
+
+    public void msgInfo(String title, String message){
+        context().addMessage("", new FacesMessage(
+                FacesMessage.SEVERITY_INFO,
+                title,
+                message
+        ));
     }
 
 }

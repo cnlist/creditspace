@@ -30,16 +30,14 @@
 </h:head>
 <h:body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 
-
+    <p:growl autoUpdate="true" showSummary="true" showDetail="true"/>
     <f:event type="postAddToView" listener="#{userController.redirectFromIndex}"/>
 
-    <p:growl autoUpdate="true" showSummary="true" showDetail="true"
 
-    />
     <div id="wrapper">
         <d:loginDialog/>
 
-        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <nav style="z-index:200 !important" class="navbar navbar-custom navbar-fixed-top" role="navigation">
 
             <div class="container navigation">
 
@@ -48,11 +46,14 @@
                             data-target=".navbar-main-collapse">
                         <i class="fa fa-bars"></i>
                     </button>
+
                     <m:logo/>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <div    style="z-index: 2"
+                        class="collapse navbar-collapse navbar-right navbar-main-collapse">
+
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#intro">Главная</a></li>
                         <!--li><a href="#service">Service</a></li>

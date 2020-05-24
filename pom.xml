@@ -10,7 +10,7 @@
     </parent>
     <groupId>us.cnlist.creditspace</groupId>
     <artifactId>creditspace-web</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>creditspace-web</name>
     <description>CreditSpace website</description>
 
@@ -33,14 +33,8 @@
     </distributionManagement>
     <repositories>
         <repository>
-            <id>cnlist-data</id>
-            <name>cnlist-data</name>
-            <url>http://173.212.234.147:8081/repository/cnlist-data</url>
-
-        </repository>
-        <repository>
-            <id>pf</id>
-            <url>http://repository.primefaces.org/</url>
+            <id>primefaces</id>
+            <url>http://194.58.103.128:8081/repository/primefaces/</url>
         </repository>
         <repository>
             <id>cnlist-releases</id>
@@ -51,6 +45,10 @@
             <id>cnlist-snapshots</id>
             <url>http://194.58.103.128:8081/repository/cnlist-snapshots</url>
             <snapshots/>
+        </repository>
+        <repository>
+            <id>central</id>
+            <url>http://194.58.103.128:8081/repository/maven-central/</url>
         </repository>
     </repositories>
     <dependencyManagement>
@@ -68,7 +66,7 @@
         <dependency>
             <groupId>us.cnlist</groupId>
             <artifactId>common-objects</artifactId>
-            <version>0.1.0</version>
+            <version>0.1.3-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -91,7 +89,31 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>org.eclipse.persistence.jpa</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-entitymanager</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <scope>runtime</scope>
+        <version>1.4.200</version>
+    </dependency>
         <dependency>
             <groupId>org.joinfaces</groupId>
             <artifactId>primefaces-spring-boot-starter</artifactId>
