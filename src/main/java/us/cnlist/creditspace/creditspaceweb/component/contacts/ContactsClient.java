@@ -6,7 +6,6 @@ import org.springframework.web.client.RestTemplate;
 import us.cnlist.creditspace.creditspaceweb.component.CustomServClient;
 import us.cnlist.creditspace.creditspaceweb.util.ServerUrl;
 import us.cnlist.objects.contacts.Contact;
-import us.cnlist.objects.messages.rq.ContactToCitizenRq;
 import us.cnlist.objects.people.Citizen;
 import us.cnlist.objects.people.UserProfile;
 
@@ -31,8 +30,8 @@ public class ContactsClient {
     public void addContactToProfile(Contact contact, String email) {
         Citizen cc = new Citizen();
         cc.setId(customServClient.getProfileByEmail(email).getCitizenData().getId());
-        ContactToCitizenRq rq = new ContactToCitizenRq(cc, contact);
-        customServRestTemplate.postForEntity(ServerUrl.PROFILE.CONTACTS, rq, Object.class);
+        // ContactToCitizenRq rq = new ContactToCitizenRq(cc, contact);
+        //  customServRestTemplate.postForEntity(ServerUrl.PROFILE.CONTACTS, rq, Object.class);
     }
 
     public void deleteContact(Long id) {

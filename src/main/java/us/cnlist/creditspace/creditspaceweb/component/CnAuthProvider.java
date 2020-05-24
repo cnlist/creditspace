@@ -7,8 +7,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
-import us.cnlist.objects.messages.rq.AuthenticateUserRQ;
-import us.cnlist.objects.messages.rs.AuthenticateUserRs;
+import us.cnlist.objects.requests.AuthenticationRQ;
+import us.cnlist.objects.responses.AuthenticationRS;
+import us.cnlist.objects.responses.ResponseType;
 
 import java.util.ArrayList;
 
@@ -22,15 +23,15 @@ public class CnAuthProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-        AuthenticateUserRQ rq = new AuthenticateUserRQ(
-                authentication.getName(),
-                authentication.getCredentials().toString()
-        );
+        AuthenticationRQ rq = new AuthenticationRQ();
+        rq.setEmail(authentication.getName());
+        rq.setPassword(authentication.getCredentials().toString());
 
-        AuthenticateUserRs rs = customerClient.doAuth(rq);
+
+        AuthenticationRS rs = customerClient.doAuth(rq);
         if (rs != null) {
 
-            if (rs.isAuthenticated()) {
+            if (rs.getResponseType() == ResponseType.SUCCESS) {
 
                 UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(authentication.getName(),
                         authentication.getCredentials().toString(), new ArrayList<>());
