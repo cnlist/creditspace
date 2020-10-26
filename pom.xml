@@ -23,32 +23,32 @@
     <distributionManagement>
         <repository>
             <id>cnlist-releases</id>
-            <url>http://194.58.103.128:8081/repository/cnlist-releases</url>
+            <url>http://srv0.cnlist.us:8081/repository/cnlist-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>cnlist-snapshots</id>
-            <url>http://194.58.103.128:8081/repository/cnlist-snapshots</url>
+            <id>cnlist-dev</id>
+            <url>http://srv0.cnlist.us:8081/repository/cnlist-dev/</url>
 
         </snapshotRepository>
     </distributionManagement>
     <repositories>
         <repository>
             <id>primefaces</id>
-            <url>http://194.58.103.128:8081/repository/primefaces/</url>
+            <url>http://srv0.cnlist.us:8081/repository/primefaces/</url>
         </repository>
         <repository>
             <id>cnlist-releases</id>
-            <url>http://194.58.103.128:8081/repository/cnlist-releases</url>
+            <url>http://srv0.cnlist.us:8081/repository/cnlist-releases/</url>
             <releases/>
         </repository>
         <repository>
-            <id>cnlist-snapshots</id>
-            <url>http://194.58.103.128:8081/repository/cnlist-snapshots</url>
+            <id>cnlist-dev</id>
+            <url>http://srv0.cnlist.us:8081/repository/cnlist-dev/</url>
             <snapshots/>
         </repository>
         <repository>
             <id>central</id>
-            <url>http://194.58.103.128:8081/repository/maven-central/</url>
+            <url>https://repo1.maven.org/maven2/</url>
         </repository>
     </repositories>
     <dependencyManagement>
@@ -137,10 +137,41 @@
 
     <build>
         <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.5.1</version>
+                <executions>
+                    <execution>
+                        <id>default-deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <serverId>nexus</serverId>
+                    <nexusUrl>http://srv0.cnlist.us:8081/</nexusUrl>
+                    <skipStaging>true</skipStaging>
+                </configuration>
             </plugin>
         </plugins>
     </build>
