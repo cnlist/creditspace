@@ -42,6 +42,7 @@ public class ControllerCore {
                         where);
         context().setViewRoot(newView);
         context().renderResponse();
+
     }
 
     public void msgError(String title, String text){

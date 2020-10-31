@@ -12,33 +12,40 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <style>
         * {
      font-size: 12px;
         }
+
     </style>
 </h:head>
-<h:body>
-    <p:confirmDialog global="true">
-        <p:commandButton value="Да" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-        <p:commandButton value="Нет" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
-    </p:confirmDialog>
-    <d:contactDialog />
-    <p:toolbar>
-        <p:toolbarGroup align="left">
-            <m:logo/>
-        </p:toolbarGroup>
-        <p:toolbarGroup align="right">
-            <h:form>
-                <p:button value="Выход" href="/logout"/>
-            </h:form>
-        </p:toolbarGroup>
+<h:body style="margin: 0 !important; padding: 0 !important;border: none !important; ">
+  <p:layout fullPage="true" style="padding: 0px !important; margin: 0px!important; border: none !important;">
+      <p:layoutUnit position="north" size="70"
+                    resizable="false"
+                    closable="false"
+                    style="padding: 0px; "
+                    collapsible="false">
+          <p:toolbar>
+              <p:toolbarGroup align="left">
+                  <p:panelGrid columns="2">
+                      <p:column>
+                          <img height="40" width="40" />
+                      </p:column>
+                      <p:column>
+                          #{profileFormController.loggedUser}
+                      </p:column>
+                  </p:panelGrid>
+              </p:toolbarGroup>
+          </p:toolbar>
+      </p:layoutUnit>
 
-    </p:toolbar>
-    <p:tabView style="width:100%; height: 100%">
-        <p:tab title="Главное" closable="false">
-            <fx:profileForm/>
-        </p:tab>
-    </p:tabView>
+
+
+      <p:layoutUnit position="center" resizable="false">
+          //page code
+      </p:layoutUnit>
+  </p:layout>
 </h:body>
 </html>
